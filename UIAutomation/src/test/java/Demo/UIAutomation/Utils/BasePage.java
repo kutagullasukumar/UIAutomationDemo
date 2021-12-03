@@ -1,6 +1,7 @@
 package Demo.UIAutomation.Utils;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
+	private final static Logger LOGGER = 
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	private WebDriver driver;
 	private WebDriverWait wait;
 			
@@ -52,5 +55,9 @@ public class BasePage {
 	
 	protected List<WebElement> getListOfElements(By locator){
 		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+	}
+	
+	protected String getTextFromLocator(By locator) {
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
 	}
 }

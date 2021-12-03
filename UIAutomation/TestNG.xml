@@ -5,5 +5,5 @@
     <classes>
       <class name="Demo.UIAutomation.Tests.BlazeDemoTests"/>
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test> 
+</suite> 

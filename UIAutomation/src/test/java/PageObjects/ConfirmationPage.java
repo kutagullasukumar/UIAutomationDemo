@@ -1,6 +1,8 @@
 package PageObjects;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +17,9 @@ import Demo.UIAutomation.Utils.BasePage;
 
 public class ConfirmationPage extends BasePage {
 
-private WebDriver driver;
+	private final static Logger LOGGER = 
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	private WebDriver driver;
 	
 	public ConfirmationPage(WebDriver driver) {
 		super(driver);
@@ -36,6 +40,7 @@ private WebDriver driver;
 				status = true;
 			}
 		}
+		LOGGER.log(Level.INFO, "validating table data not equals null");
 		return status;
 	}
 }
