@@ -1,8 +1,9 @@
 package Demo.UIAutomation.Utils;
 
-import java.lang.System.Logger;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +17,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  */
 public class BaseTest implements Drivers {
 
+	private final static Logger LOGGER = 
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	private static Properties properties = new PropertyReader().readProperties();
 	
@@ -52,6 +55,7 @@ public class BaseTest implements Drivers {
 		getDriver().get(properties.getProperty("url"));
 		getDriver().manage().window().maximize();
 		getDriver().manage().deleteAllCookies();
+		LOGGER.log(Level.INFO, "Initialized " + browserName + " driver.");
 	}
 
 	public static Browsers getBrowser() {
@@ -69,5 +73,6 @@ public class BaseTest implements Drivers {
 	{
 		driver.get().close();
 		driver.remove();
+		LOGGER.log(Level.INFO, "Closed " + browserName + " driver.");
 	}
 }

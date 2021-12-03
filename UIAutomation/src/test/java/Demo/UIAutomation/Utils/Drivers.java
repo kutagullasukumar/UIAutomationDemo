@@ -3,6 +3,8 @@
  */
 package Demo.UIAutomation.Utils;
 
+import java.util.logging.Logger;
+
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -10,7 +12,7 @@ import org.openqa.selenium.WebDriver;
  *
  */
 public interface Drivers {
-
+	
 	public static final String curDir = System.getProperty("user.dir");
 	public static final String CONFIG_PATH = curDir + "\\Resources\\Config.properties";
 	public static final String LOCATORS_PATH = curDir + "\\Resources\\Locators.properties";

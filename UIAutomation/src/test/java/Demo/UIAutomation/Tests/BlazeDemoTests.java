@@ -1,6 +1,8 @@
 package Demo.UIAutomation.Tests;
 
 import java.lang.reflect.Method;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,6 +22,8 @@ import PageObjects.PurchasePage;
 
 public class BlazeDemoTests {
 
+	private final static Logger LOGGER = 
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	SoftAssert softAssert = new SoftAssert();
 	public BlazeDemoLandingPage blazeDemoLandingPage;
 	public PurchasePage purchasePage;
@@ -31,12 +35,12 @@ public class BlazeDemoTests {
 		blazeDemoLandingPage = new BlazeDemoLandingPage(BaseTest.getDriver());
 		purchasePage = new PurchasePage(BaseTest.getDriver());
 		confirmationPage = new ConfirmationPage(BaseTest.getDriver());
-		System.out.println("Browser setup by Thread " + Thread.currentThread().getId() + " and Driver reference is : "
-				+ BaseTest.getDriver());
+		LOGGER.log(Level.INFO, "Browser setup by Thread " + Thread.currentThread().getId() + " and Driver reference is :" + BaseTest.getDriver());
 	}
 
 	@Test
 	public void verifyBookingConfirmation(Method m) throws InterruptedException {
+		LOGGER.log(Level.INFO, "Executing " + m.getName());
 		softAssert.assertEquals(blazeDemoLandingPage.getText(BaseTest.getProperties().getProperty("landingPageHeader")),
 				BaseTest.getProperties().getProperty("landingPageHeaderText"));
 		blazeDemoLandingPage.selectValueFromDrpDown(BaseTest.getProperties().getProperty("chooseDepartureCityDrpDown"),
@@ -79,12 +83,12 @@ public class BlazeDemoTests {
 				confirmationPage.verifyTableDataNotNull(BaseTest.getProperties().getProperty("confirmationTableData")),
 				"Element text is null");
 		softAssert.assertAll();
+		LOGGER.log(Level.INFO, "Execution of " + m.getName() + " completed.");
 	}
 
 	@AfterClass
 	public void tearDown() {
-		System.out.println("Browser closed by Thread " + Thread.currentThread().getId()
-				+ " and Closing driver reference is :" + BaseTest.getDriver());
+		LOGGER.log(Level.INFO, "Browser closed by Thread " + Thread.currentThread().getId() + " and Closing Driver reference is :" + BaseTest.getDriver());
 		BaseTest.closeBrowser();
 	}
 }
