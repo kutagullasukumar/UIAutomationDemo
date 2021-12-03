@@ -22,9 +22,9 @@ public class PropertyReader {
 	public Properties readProperties() {
 		
 		try {
-			props.load(new FileInputStream(Drivers.CONFIG_PATH));
-			props.load(new FileInputStream(Drivers.LOCATORS_PATH));
-			props.load(new FileInputStream(Drivers.TESTDATA_PATH));
+			props.load(new FileInputStream(Constants.CONFIG_PATH));
+			props.load(new FileInputStream(Constants.LOCATORS_PATH));
+			props.load(new FileInputStream(Constants.TESTDATA_PATH));
 			LOGGER.log(Level.INFO, "Reading properties file data");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
