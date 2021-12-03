@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
  * @author Sukumar
  *
  */
-public interface Drivers {
+public interface Constants {
 	
 	public static final String curDir = System.getProperty("user.dir");
 	public static final String CONFIG_PATH = curDir + "\\Resources\\Config.properties";

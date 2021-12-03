@@ -15,7 +15,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  * @author Sukumar
  *
  */
-public class BaseTest implements Drivers {
+public class BaseTest implements Constants {
 
 	private final static Logger LOGGER = 
             Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
