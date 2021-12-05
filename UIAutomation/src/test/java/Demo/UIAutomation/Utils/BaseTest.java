@@ -43,13 +43,7 @@ public class BaseTest implements Constants {
 		switch (browserName) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-					options.setBinary("/usr/bin/google-chrome");
-					options.addArguments("--no-sandbox");
-					options.setBinary("/usr/local/bin/chromedriver");
-					options.addArguments("--disable-dev-shm-usage");
-					driver.set((WebDriver) (options=options));
-			//driver.set(new ChromeDriver());
+			driver.set(new ChromeDriver());
 			break;
 		case "edge":
 			WebDriverManager.edgedriver().setup();
