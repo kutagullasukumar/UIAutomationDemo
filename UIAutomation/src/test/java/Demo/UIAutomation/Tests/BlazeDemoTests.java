@@ -22,8 +22,7 @@ import PageObjects.PurchasePage;
 
 public class BlazeDemoTests {
 
-	private final static Logger LOGGER = 
-            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	SoftAssert softAssert = new SoftAssert();
 	public BlazeDemoLandingPage blazeDemoLandingPage;
 	public PurchasePage purchasePage;
@@ -35,7 +34,8 @@ public class BlazeDemoTests {
 		blazeDemoLandingPage = new BlazeDemoLandingPage(BaseTest.getDriver());
 		purchasePage = new PurchasePage(BaseTest.getDriver());
 		confirmationPage = new ConfirmationPage(BaseTest.getDriver());
-		LOGGER.log(Level.INFO, "Browser setup by Thread " + Thread.currentThread().getId() + " and Driver reference is :" + BaseTest.getDriver());
+		LOGGER.log(Level.INFO, "Browser setup by Thread " + Thread.currentThread().getId()
+				+ " and Driver reference is :" + BaseTest.getDriver());
 	}
 
 	@Test
@@ -75,6 +75,10 @@ public class BlazeDemoTests {
 				BaseTest.getProperties().getProperty("cardYear"));
 		purchasePage.enterText(BaseTest.getProperties().getProperty("nameOnCreditCard"),
 				BaseTest.getProperties().getProperty("name"));
+		softAssert.assertEquals(
+				purchasePage.getPrice(BaseTest.getProperties().getProperty("purchasePagePrice"))
+						+ purchasePage.getPrice(BaseTest.getProperties().getProperty("purchasePageFeesAndTax")),
+				purchasePage.getPrice(BaseTest.getProperties().getProperty("purchasePageTotalCost")));
 		blazeDemoLandingPage.clickBtn(BaseTest.getProperties().getProperty("purchaseFlightsBtn"));
 		softAssert.assertTrue(
 				blazeDemoLandingPage.isDisplayed(BaseTest.getProperties().getProperty("confirmationHeaderText")),
@@ -88,7 +92,8 @@ public class BlazeDemoTests {
 
 	@AfterClass
 	public void tearDown() {
-		LOGGER.log(Level.INFO, "Browser closed by Thread " + Thread.currentThread().getId() + " and Closing Driver reference is :" + BaseTest.getDriver());
+		LOGGER.log(Level.INFO, "Browser closed by Thread " + Thread.currentThread().getId()
+				+ " and Closing Driver reference is :" + BaseTest.getDriver());
 		BaseTest.closeBrowser();
 	}
 }
