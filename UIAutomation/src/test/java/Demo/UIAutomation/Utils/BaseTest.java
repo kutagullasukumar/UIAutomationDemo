@@ -1,12 +1,12 @@
 package Demo.UIAutomation.Utils;
 
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -43,7 +43,13 @@ public class BaseTest implements Constants {
 		switch (browserName) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver.set(new ChromeDriver());
+			ChromeOptions options = new ChromeOptions();
+					options.setBinary("/usr/bin/google-chrome");
+					options.addArguments("--no-sandbox");
+					options.setBinary("/usr/local/bin/chromedriver");
+					options.addArguments("--disable-dev-shm-usage");
+					driver.set((WebDriver) (options=options));
+			//driver.set(new ChromeDriver());
 			break;
 		case "edge":
 			WebDriverManager.edgedriver().setup();

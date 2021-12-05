@@ -3,10 +3,6 @@
  */
 package Demo.UIAutomation.Utils;
 
-import java.util.logging.Logger;
-
-import org.openqa.selenium.WebDriver;
-
 /**
  * @author Sukumar
  *
