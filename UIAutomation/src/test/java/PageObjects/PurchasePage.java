@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import Demo.UIAutomation.Utils.BasePage;
+import Demo.UIAutomation.Utils.Utils;
 
 /**
  * @author Sukumar
@@ -31,6 +32,10 @@ public class PurchasePage extends BasePage {
 	public void enterText(String locator, String data) {
 		enterText(By.id(locator), data);
 		LOGGER.log(Level.INFO, "Enter data into " + locator + "field.");
+	}
+	
+	public double getPrice(String locator) {
+		return Utils.getPriceFromString(getTextFromLocator(By.xpath(locator)));
 	}
 }
  

@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  */
 
-public class PropertyReader {
+public class Utils {
 
 	public Properties props = new Properties();
 	private final static Logger LOGGER = 
@@ -35,7 +35,8 @@ public class PropertyReader {
 		return props;
 	}
 	
-	public String getProperty(String key) {
-		return props.getProperty(key);
+	public static double getPriceFromString(String data) {
+		String[] str = data.split(":");
+		return Double.parseDouble(str[1]);
 	}
 }

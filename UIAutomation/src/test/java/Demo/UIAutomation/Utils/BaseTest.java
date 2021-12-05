@@ -20,7 +20,7 @@ public class BaseTest implements Constants {
 	private final static Logger LOGGER = 
             Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
-	private static Properties properties = new PropertyReader().readProperties();
+	private static Properties properties = new Utils().readProperties();
 	
 	public static Properties getProperties() {
 		return properties;
