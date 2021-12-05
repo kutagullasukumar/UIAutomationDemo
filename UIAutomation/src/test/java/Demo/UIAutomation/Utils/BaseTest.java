@@ -42,7 +42,7 @@ public class BaseTest implements Constants {
 		getBrowser();
 		switch (browserName) {
 		case "chrome":
-			WebDriverManager.chromedriver().setup();
+			System.setProperty("webdriver.chrome.driver", Constants.CHROMEDRIVER_PATH);
 			driver.set(new ChromeDriver());
 			break;
 		case "edge":
