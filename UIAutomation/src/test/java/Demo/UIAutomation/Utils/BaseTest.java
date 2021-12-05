@@ -42,8 +42,7 @@ public class BaseTest implements Constants {
 		getBrowser();
 		switch (browserName) {
 		case "chrome":
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--headless");
+			WebDriverManager.edgedriver().setup();
 			driver.set(new ChromeDriver());
 			break;
 		case "edge":
